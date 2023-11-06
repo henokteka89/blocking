@@ -1,0 +1,29 @@
+USE [DBAUtil]
+GO
+
+/****** Object:  Table [dbo].[tbl_blockers]    Script Date: 11/6/2023 5:26:32 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[tbl_blockers](
+	[date] [datetime] NULL,
+	[spid] [smallint] NOT NULL,
+	[ecid] [smallint] NOT NULL,
+	[blocked] [smallint] NOT NULL,
+	[waittype] [binary](2) NULL,
+	[physical_io] [varchar](20) NULL,
+	[memusage] [varchar](20) NULL,
+	[hostname] [varchar](128) NULL,
+	[program_name] [varchar](255) NULL,
+	[nt_username] [varchar](255) NULL,
+	[dbname] [varchar](255) NOT NULL,
+	[ignore_app] [tinyint] NULL,
+	[loginame] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[tbl_blockers] ADD  CONSTRAINT [df_blockers_date]  DEFAULT (getdate()) FOR [date]
+GO
